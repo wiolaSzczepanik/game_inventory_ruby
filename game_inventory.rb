@@ -11,6 +11,11 @@ class GameInventory
     end
      puts "Inventory: #{total_number_of_items}"
    end
+   if __FILE__ == $0
+     inv = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+     game = GameInventory.new
+     game.display_inventory(inv)
+   end
 
 
  end
