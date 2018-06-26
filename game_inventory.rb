@@ -13,14 +13,14 @@ class GameInventory
    end
 
    def add_to_inventory(inventory, added_items)
-      items_to_add = Hash.new(0).tap { |h| added_items.each { |item| h[item] += 1 } }
-
+     items_to_add = Hash.new(0).tap { |h| added_items.each { |item| h[item] += 1 } }
      inventory.merge(items_to_add){|k, inv_value, items_value| inv_value.merge  items_value}
 
-     # totals = inventory.reduce({}) do |sums, items|
-     #   sums.merge(items) {|_, a, b| a + b}
-     # end
+   end
 
+   def print_table(inventory)
+     require 'pp'
+     pp inventory
    end
 
    if __FILE__ == $0
@@ -31,6 +31,8 @@ class GameInventory
      dragon_loot = ["gold_coin", "dagger", "gold_coin", "gold_coin", "ruby"]
      inventory = game.add_to_inventory(inv,dragon_loot)
      game.display_inventory(inventory)
+
+     game.print_table(inventory)
 
      puts inventory
 
